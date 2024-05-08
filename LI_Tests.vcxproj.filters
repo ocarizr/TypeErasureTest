@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\TE">
+      <UniqueIdentifier>{f424be07-3af9-4510-bb3e-1c55181b08b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tasks">
+      <UniqueIdentifier>{a9b9c1a0-ccc1-4d49-9c59-ee8bd639ebd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TE">
+      <UniqueIdentifier>{4e13386b-56ed-4407-ba8b-b05bfa022ed7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tasks">
+      <UniqueIdentifier>{3c7b9af2-6329-412c-b54a-0138c7e8e346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PO">
+      <UniqueIdentifier>{463ee0e5-1f63-4b9d-8fa6-5b1d96b98d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PO">
+      <UniqueIdentifier>{d65ae81d-e762-4415-a324-1b5d2bace97b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EntryPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TE_TaskManager.cpp">
+      <Filter>Source Files\TE</Filter>
+    </ClCompile>
+    <ClCompile Include="TE_TaskTracker.cpp">
+      <Filter>Source Files\TE</Filter>
+    </ClCompile>
+    <ClCompile Include="ITaskManager.cpp">
+      <Filter>Source Files\PO</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskOne.cpp">
+      <Filter>Source Files\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskThree.cpp">
+      <Filter>Source Files\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskTwo.cpp">
+      <Filter>Source Files\Tasks</Filter>
+    </ClCompile>
+    <ClCompile Include="ITask.cpp">
+      <Filter>Source Files\PO</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TE_TaskBuilder.h">
+      <Filter>Header Files\TE</Filter>
+    </ClInclude>
+    <ClInclude Include="TE_TaskManager.h">
+      <Filter>Header Files\TE</Filter>
+    </ClInclude>
+    <ClInclude Include="TE_TaskTracker.h">
+      <Filter>Header Files\TE</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskOne.h">
+      <Filter>Header Files\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskThree.h">
+      <Filter>Header Files\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskTwo.h">
+      <Filter>Header Files\Tasks</Filter>
+    </ClInclude>
+    <ClInclude Include="ITaskManager.h">
+      <Filter>Header Files\PO</Filter>
+    </ClInclude>
+    <ClInclude Include="ITask.h">
+      <Filter>Header Files\PO</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
