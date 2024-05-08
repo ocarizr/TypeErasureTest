@@ -11,7 +11,8 @@
 
 constexpr int run = 1000;
 
-void POTest()
+
+void POTest(std::vector<int> number_array)
 {
 	TaskOneData oneData{ 0, 1000000 };
 	TaskTwoData twoData{
@@ -19,15 +20,7 @@ void POTest()
 		"call"
 	};
 
-	std::unordered_set<int> numbers;
-	numbers.insert(10);
-	while (numbers.size() < 1000)
-	{
-		int number = rand();
-		numbers.insert(number);
-	}
-
-	TaskThreeData threeData{ std::vector(numbers.begin(), numbers.end()), 10 };
+	TaskThreeData threeData{ number_array, 10 };
 
 	std::chrono::high_resolution_clock clock;
 	auto start = clock.now();
@@ -48,7 +41,7 @@ void POTest()
 	printf("PO Test:\n Time: %lld ms\n Average time: %f ms", time, (time / static_cast<float>(run)));
 }
 
-void TETest()
+void TETest(std::vector<int> number_array)
 {
 	TaskOneData oneData{ 0, 1000000 };
 	TaskTwoData twoData{
@@ -56,15 +49,7 @@ void TETest()
 		"call"
 	};
 
-	std::unordered_set<int> numbers;
-	numbers.insert(10);
-	while (numbers.size() < 1000)
-	{
-		int number = rand();
-		numbers.insert(number);
-	}
-
-	TaskThreeData threeData{ std::vector(numbers.begin(), numbers.end()), 10 };
+	TaskThreeData threeData{ std::vector(number_array), 10 };
 
 	std::chrono::high_resolution_clock clock;
 	auto start = clock.now();
@@ -87,10 +72,19 @@ void TETest()
 
 int main()
 {
+	std::unordered_set<int> numbers;
+	numbers.insert(10);
+	while (numbers.size() < 1000)
+	{
+		int number = rand();
+		numbers.insert(number);
+	}
+	std::vector<int> number_array(numbers.begin(), numbers.end());
+
 	printf("PO Test results:\n");
-	POTest();
+	POTest(number_array);
 
 	printf("\n\n\nTE Test Results:\n");
-	TETest();
+	TETest(number_array);
 	return 0;
 }
