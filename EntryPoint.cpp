@@ -9,8 +9,7 @@
 
 #include "TE_TaskManager.h"
 
-constexpr int run = 1000;
-
+constexpr int run = 10;
 
 void POTest(std::vector<int> number_array)
 {
@@ -22,8 +21,7 @@ void POTest(std::vector<int> number_array)
 
 	TaskThreeData threeData{ number_array, 10 };
 
-	std::chrono::high_resolution_clock clock;
-	auto start = clock.now();
+	auto start = std::chrono::high_resolution_clock::now();
 	for (int i = 0; i < run; ++i)
 	{
 		PO_TaskManager manager;
@@ -35,10 +33,10 @@ void POTest(std::vector<int> number_array)
 			manager.tick();
 		}
 	}
-	auto end = clock.now();
-	auto time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-
-	printf("PO Test:\n Time: %lld ms\n Average time: %f ms", time, (time / static_cast<float>(run)));
+	auto end = std::chrono::high_resolution_clock::now();
+	auto time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+	float ms_time = time / 1000.0f;
+	printf("PO Test:\n Time: %.0f us\n Average time: %.3f us", ms_time, (ms_time / static_cast<float>(run)));
 }
 
 void TETest(std::vector<int> number_array)
@@ -49,10 +47,9 @@ void TETest(std::vector<int> number_array)
 		"call"
 	};
 
-	TaskThreeData threeData{ std::vector(number_array), 10 };
+	TaskThreeData threeData{ number_array, 10 };
 
-	std::chrono::high_resolution_clock clock;
-	auto start = clock.now();
+	auto start = std::chrono::high_resolution_clock::now();
 	for (int i = 0; i < run; ++i)
 	{
 		TE_TaskManager manager;
@@ -64,10 +61,10 @@ void TETest(std::vector<int> number_array)
 			manager.tick();
 		}
 	}
-	auto end = clock.now();
-	auto time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-
-	printf("TE Test:\n Time: %lld ms\n Average time: %f ms", time, (time / static_cast<float>(run)));
+	auto end = std::chrono::high_resolution_clock::now();
+	auto time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+	float ms_time = time / 1000.0f;
+	printf("TE Test:\n Time: %.0f us\n Average time: %.3f us", ms_time, (ms_time / static_cast<float>(run)));
 }
 
 int main()
@@ -81,10 +78,11 @@ int main()
 	}
 	std::vector<int> number_array(numbers.begin(), numbers.end());
 
-	printf("PO Test results:\n");
 	POTest(number_array);
 
-	printf("\n\n\nTE Test Results:\n");
+	printf("\n\n\n");
 	TETest(number_array);
+
+	printf("\n\n");
 	return 0;
 }
