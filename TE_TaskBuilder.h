@@ -43,22 +43,17 @@ inline TypeErasedTaskFunctionTable* TaskTrackerBuilder::build_function_table<Tas
 		[](std::any& obj, std::any& data)
 		{
 			const TaskOneData& cast_data = std::any_cast<TaskOneData>(data);
-			const TaskOne& typedObj = std::any_cast<TaskOne>(obj);
-			auto ptr = const_cast<TaskOne*>(&typedObj);
-			ptr->Start(cast_data.start_point, cast_data.target);
+			std::any_cast<TaskOne>(&obj)->Start(cast_data.start_point, cast_data.target);
 		},
 		// tick
 		[](std::any& obj)
 		{
-			const TaskOne& typedObj = std::any_cast<TaskOne>(obj);
-			auto ptr = const_cast<TaskOne*>(&typedObj);
-			ptr->Pump();
+			std::any_cast<TaskOne>(&obj)->Pump();
 		},
 		//get_status
 		[](const std::any& obj)
 		{
-			const TaskOne& typedObj = std::any_cast<TaskOne>(obj);
-			const int status = typedObj.GetStatus();
+			const int status = std::any_cast<TaskOne>(&obj)->GetStatus();
 
 			if(status == 0)
 			{
@@ -107,22 +102,17 @@ inline TypeErasedTaskFunctionTable* TaskTrackerBuilder::build_function_table<Tas
 		[](std::any& obj, std::any& data)
 		{
 			const TaskTwoData& cast_data = std::any_cast<TaskTwoData>(data);
-			const TaskTwo& typedObj = std::any_cast<TaskTwo>(obj);
-			auto ptr = const_cast<TaskTwo*>(&typedObj);
-			ptr->Start(cast_data.buffer, cast_data.search_to);
+			std::any_cast<TaskTwo>(&obj)->Start(cast_data.buffer, cast_data.search_to);
 		},
 		// tick
 		[](std::any& obj)
 		{
-			const TaskTwo& typedObj = std::any_cast<TaskTwo>(obj);
-			auto ptr = const_cast<TaskTwo*>(&typedObj);
-			ptr->Update();
+			std::any_cast<TaskTwo>(&obj)->Update();
 		},
 		//get_status
 		[](const std::any& obj)
 		{
-			const TaskTwo& typedObj = std::any_cast<TaskTwo>(obj);
-			int status = typedObj.GetStatus();
+			const int status = std::any_cast<TaskTwo>(&obj)->GetStatus();
 
 			if (status == 0)
 			{
@@ -171,22 +161,17 @@ inline TypeErasedTaskFunctionTable* TaskTrackerBuilder::build_function_table<Tas
 		[](std::any& obj, std::any& data)
 		{
 			const TaskThreeData& cast_data = std::any_cast<TaskThreeData&>(data);
-			const TaskThree& typedObj = std::any_cast<TaskThree>(obj);
-			auto ptr = const_cast<TaskThree*>(&typedObj);
-			ptr->Start(cast_data.buffer, cast_data.search_to);
+			std::any_cast<TaskThree>(&obj)->Start(cast_data.buffer, cast_data.search_to);
 		},
 		// tick
 		[](std::any& obj)
 		{
-			const TaskThree& typedObj = std::any_cast<TaskThree>(obj);
-			auto ptr = const_cast<TaskThree*>(&typedObj);
-			ptr->Update();
+			std::any_cast<TaskThree>(&obj)->Update();
 		},
 		//get_status
 		[](const std::any& obj)
 		{
-			const TaskThree& typedObj = std::any_cast<TaskThree>(obj);
-			ETaskThreeStatus status = typedObj.GetStatus();
+			ETaskThreeStatus status = std::any_cast<TaskThree>(&obj)->GetStatus();
 			switch (status)
 			{
 				case ETaskThreeStatus::IDLE:

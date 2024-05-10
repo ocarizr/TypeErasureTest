@@ -26,6 +26,7 @@ void TaskTwo::Update()
 	if(m_current_location == std::string::npos)
 	{
 		m_status = 1;
+		//printf("Task Two: Completed\n");
 		return;
 	}
 

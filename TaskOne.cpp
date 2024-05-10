@@ -1,5 +1,7 @@
 #include "TaskOne.h"
 
+#include <cstdio>
+
 TaskOne::TaskOne()
 	: m_target(0)
 	, m_currentValue(0)
@@ -24,5 +26,6 @@ void TaskOne::Pump()
 	if(m_currentValue++ == m_target)
 	{
 		m_status = 1;
+		//printf("Task One: Completed\n");
 	}
 }

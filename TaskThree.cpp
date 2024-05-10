@@ -12,6 +12,7 @@ void TaskThree::Start(const std::vector<int>& buffer, int target)
 {
 	m_buffer = buffer;
 	m_searching = target;
+	m_status = ETaskThreeStatus::PROCESSING;
 
 	std::sort(m_buffer.begin(), m_buffer.end());
 }
@@ -26,6 +27,7 @@ void TaskThree::Update()
 	if(m_buffer.empty() || (m_buffer.size() == 1 && m_buffer[0] != m_searching))
 	{
 		m_status = ETaskThreeStatus::FAILURE;
+		//printf("Task Three: Completed\n");
 		return;
 	}
 
@@ -34,6 +36,7 @@ void TaskThree::Update()
 	if(mid_value == m_searching)
 	{
 		m_status = ETaskThreeStatus::SUCCESS;
+		//printf("Task Three: Completed\n");
 		return;
 	}
 
